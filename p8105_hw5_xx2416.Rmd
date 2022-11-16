@@ -105,7 +105,7 @@ homicides_estimate %>%
 
 # Problem 3
 
-* First, we write the `get_sim_t` function to simulate datasets and obtain the esimate and p-value of `t.test`, and test this function from $\mu=0. 
+* First, we write the `get_sim_t` function to simulate datasets and obtain the esimate and p-value of `t.test`, and test this function from µ=0. 
 ```{r}
 x=tibble(rnorm(30,0,5)) %>% 
   t.test() %>% 
@@ -136,7 +136,7 @@ sim_results_df_0 =
   unnest(estimate_df)
 ```
 
-* Repeat the above for $\mu={1,2,3,4,5,6}, and get the whole simulation results df
+* Repeat the above for µ={1,2,3,4,5,6}, and get the whole simulation results df
 ```{r}
 sim_results_df = 
   expand_grid(
@@ -149,7 +149,7 @@ sim_results_df =
   unnest(estimate_df)
 ```
 
-* Make a plot showing the proportion of times the null was rejected (the power of the test) on the y axis and the true value of $\mu on the x axis.
+* Make a plot showing the proportion of times the null was rejected (the power of the test) on the y axis and the true value of µ on the x axis.
 
 ```{r}
 sim_results_df %>%
@@ -197,4 +197,6 @@ sim_results_df %>%
     y="the average estimate value of mu (the null was rejected )"
   )
 ```
+
+* We can find out from the plot that the sample average of µ (which is the estimate µ) across tests for which null is rejected approximately equal to the true value of µ (which is the sample µ). Since the power increases as the true value of µ increases, the probability of making type II error decreases, and the more samples with approximately equal values to the true value of µ is get rejected, which then making the average sample µ get nearer to true value. That's why  the difference between average sample µ and true µ decreases as the power of the test increase. 
 
